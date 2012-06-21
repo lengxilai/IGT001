@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11D50" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Config" representedClassName="Config" syncable="YES">
+        <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="value" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="ItemMaster" representedClassName="ItemMaster" syncable="YES">
+        <attribute name="addtime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="itemname" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="itemtype" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TypeMaster" inverseName="items" inverseEntity="TypeMaster" syncable="YES"/>
+        <relationship name="planitems" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="PlanItem" inverseName="item" inverseEntity="PlanItem" syncable="YES"/>
+        <relationship name="templates" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TemplateMaster" inverseName="items" inverseEntity="TemplateMaster" syncable="YES"/>
+    </entity>
+    <entity name="Plan" representedClassName="Plan" syncable="YES">
+        <attribute name="addtime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="desadr" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hotelname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isalarm" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isover" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="memo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="planid" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="starttime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="travldetail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="travltype" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="planitems" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="PlanItem" inverseName="plan" inverseEntity="PlanItem" syncable="YES"/>
+        <relationship name="template" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TemplateMaster" inverseName="plan" inverseEntity="TemplateMaster" syncable="YES"/>
+    </entity>
+    <entity name="PlanItem" representedClassName="PlanItem" syncable="YES">
+        <attribute name="addtime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="ischecked" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <relationship name="item" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ItemMaster" inverseName="planitems" inverseEntity="ItemMaster" syncable="YES"/>
+        <relationship name="plan" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Plan" inverseName="planitems" inverseEntity="Plan" syncable="YES"/>
+    </entity>
+    <entity name="TemplateMaster" representedClassName="TemplateMaster" syncable="YES">
+        <attribute name="addtime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="templatename" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ItemMaster" inverseName="templates" inverseEntity="ItemMaster" syncable="YES"/>
+        <relationship name="plan" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Plan" inverseName="template" inverseEntity="Plan" syncable="YES"/>
+    </entity>
+    <entity name="TypeMaster" representedClassName="TypeMaster" syncable="YES">
+        <attribute name="addtime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="typename" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="ItemMaster" inverseName="itemtype" inverseEntity="ItemMaster" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="ItemMaster" positionX="27" positionY="9" width="128" height="90"/>
+        <element name="Plan" positionX="153" positionY="210" width="128" height="225"/>
+        <element name="PlanItem" positionX="241" positionY="45" width="128" height="90"/>
+        <element name="TemplateMaster" positionX="-162" positionY="189" width="128" height="105"/>
+        <element name="TypeMaster" positionX="-234" positionY="-18" width="128" height="90"/>
+        <element name="Config" positionX="160" positionY="192" width="128" height="75"/>
+    </elements>
+</model>

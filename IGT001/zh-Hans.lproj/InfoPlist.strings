@@ -1,0 +1,4 @@
+/* Localized versions of Info.plist keys */
+
+CFBundleName = "差旅备忘";   
+CFBundleDisplayName = "差旅备忘";

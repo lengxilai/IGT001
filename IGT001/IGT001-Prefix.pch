@@ -1,0 +1,21 @@
+//
+// Prefix header for all source files of the 'IGT001' target in the 'IGT001' project
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_4_0
+#warning "This project uses features only available in iOS SDK 4.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+    #import <CoreData/CoreData.h>
+    #import "UIColor+IGColor.h"
+    #import "TemplateMasterHelper.h"
+#import "TypeMaster+Helper.h"
+#import "Plan+Helper.h"
+#import "IGDataLoader.h"
+#import "Config.h"
+#endif
